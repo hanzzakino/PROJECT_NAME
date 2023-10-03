@@ -17,7 +17,7 @@ class TasksFactory extends Factory
     public function definition()
     {
         return [
-            'taskName'=> $this->faker->sentence($nbWords = 4),
+            'taskName'=> $this->faker->sentence($nbWords = 3),
             'description'=> $this->faker->sentence($nbWords = 15)
         ];
     }

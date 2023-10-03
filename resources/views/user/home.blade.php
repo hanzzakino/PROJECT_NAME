@@ -1,9 +1,17 @@
-@extends('layout')
-
-@section('content')
+<x-main-container>
     <div class="container-fluid pb-4 pt-4">
-        <div class="container d-flex flex-row justify-content-end mt-3">
-            <h1>Hello! {{$name}}</h1>
+        <div class="container d-flex flex-row justify-content-between mt-3">
+            <div class="d-flex align-items-center">
+                <form class="form-group d-flex flex-row" >
+                    <input class="form-control" type="text" name="search" placeholder="Search"/>
+                    <button class="btn btn-primary ml-2" type="submit">Search</button>
+                </form>
+                
+            </div>
+            <div>
+                <h1>Hello!</h1>
+            </div>
+            
         </div>
         
         
@@ -16,14 +24,7 @@
                 <h2>Empty</h2>
             @else
                 @foreach ($tasks as $task)
-                    <div class="card container mb-3 pt-2 pb-2">
-                        <a href="task/{{$task['id']}}">
-                            {{$task['taskName']}}
-                        </a>
-                        <p>
-                            {{$task['description']}}
-                        </p>
-                    </div>
+                    <x-task-card :task="$task"/>
                 @endforeach
             @endif
             <div class="d-flex flex-row justify-content-center">
@@ -31,4 +32,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-main-container>

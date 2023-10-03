@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TasksController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Tasks;
@@ -16,7 +17,7 @@ use App\Models\Tasks;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/user');
 });
 
 
@@ -24,18 +25,10 @@ Route::get('/user/login', function () {
     return view('/user/login');
 });
 
-Route::get('/user/home', function () {
-    return view('/user/home',[
-        'name' => 'Hanz Aquino',
-        'tasks' => Tasks::all()
-    ]);
-});
+Route::get('/user/home', [TasksController::class,'index']);
 
-Route::get('/user/task/{id}', function ($id) {
-    return view('/user/task',[
-        'task' => Tasks::find($id),
-    ]);
-});
+// Route Model binding
+Route::get('/user/task/{task}', [TasksController::class,'show']);
 
 
 

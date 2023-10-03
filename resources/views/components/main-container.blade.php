@@ -13,10 +13,9 @@
             border: 1px dashed rgba(0, 0, 0, 0.342) !important;
         }
     </style>
-
     
-  
-    @include('shared/navbar')
-    @yield('content')
+    <x-navbar />
+
+    {{$slot}}
 </body>
 </html>
