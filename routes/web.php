@@ -24,12 +24,21 @@ Route::get('/user/login', function () {
     return view('/user/login');
 });
 
-Route::get('/user', function () {
+Route::get('/user/home', function () {
     return view('/user/home',[
         'name' => 'Hanz Aquino',
-        'tasks' => Tasks::all()  
+        'tasks' => Tasks::all()
     ]);
 });
+
+Route::get('/user/task/{id}', function ($id) {
+    return view('/user/task',[
+        'task' => Tasks::find($id),
+    ]);
+});
+
+
+
 
 // Route::get('/get-object', function () {
 //     return response(
