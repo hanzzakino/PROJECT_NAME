@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TasksController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Tasks;
@@ -23,19 +24,31 @@ Route::get('/', function () {
 
 Route::get('/user/login', function () {
     return view('/user/login');
-});
+})->name('login')->middleware('guest');
+Route::get('/user/register', [UserController::class, 'create']);
 
-Route::get('/tasks/home', [TasksController::class, 'index']);
+Route::post('/user', [UserController::class, 'store'])->middleware('guest');
+
+Route::get('/user/logout',  [UserController::class, 'logout'])->middleware('auth');
+
+Route::post('/user/authenticate',  [UserController::class, 'authenticate'])->middleware('guest');
 
 
+
+Route::get('/tasks/home', [TasksController::class, 'index'])->middleware('auth');
 
 // Route Model binding
-Route::get('/tasks/create', [TasksController::class, 'create']);
+Route::get('/tasks/create', [TasksController::class, 'create'])->middleware('auth');
 
-Route::post('/tasks', [TasksController::class, 'store']);
+Route::post('/tasks', [TasksController::class, 'store'])->middleware('auth');
+
+Route::delete('/tasks/{task}', [TasksController::class, 'delete'])->middleware('auth');
 
 // Route Model binding
-Route::get('/tasks/{task}', [TasksController::class, 'show']);
+Route::get('/tasks/{task}', [TasksController::class, 'show'])->middleware('auth');
+
+
+
 
 
 // Route::get('/get-object', function () {

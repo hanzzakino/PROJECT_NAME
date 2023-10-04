@@ -9,7 +9,7 @@
 
             </div>
             <div>
-                <h1>Hello!</h1>
+                <h1>Hello! {{ auth()->user()->name }}</h1>
             </div>
 
         </div>
@@ -22,10 +22,9 @@
                         Tasks
                     </h1>
                 </div>
-                <div class="d-flex align-items-center">
-                    <p>
-                        {{ $resultCount }} Items
-                    </p>
+
+                <div class="align-self-center">
+                    <a href="/tasks/create" class="btn btn-primary">Add task</a>
                 </div>
             </div>
 
@@ -36,9 +35,16 @@
                     <x-task-card :task="$task" />
                 @endforeach
             @endif
-            <div class="d-flex flex-row justify-content-center">
-                <a href="/tasks/create" class="btn btn-primary">Add task</a>
+
+            <div class="d-flex flex-row justify-content-between">
+                <div class="align-self-center">
+                    <p>
+                        {{ $resultCount }} {{ 'Item(s)' }}
+                    </p>
+                </div>
+                <div>{{ $tasks->links() }}</div>
             </div>
+
         </div>
     </div>
 </x-main-container>

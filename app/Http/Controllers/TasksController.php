@@ -12,8 +12,8 @@ class TasksController extends Controller
     {
 
         return view('tasks.home', [
-            'tasks' => Tasks::latest()->filter(request(['search']))->get(),
-            'resultCount' => Tasks::latest()->filter(request(['search']))->count(),
+            'tasks' => Tasks::where('user_id', auth()->user()->id)->latest()->filter(request(['search']))->paginate(15),
+            'resultCount' => Tasks::where('user_id', auth()->user()->id)->latest()->filter(request(['search']))->count(),
         ]);
     }
 
@@ -31,13 +31,24 @@ class TasksController extends Controller
 
     public function store(Request $request)
     {
+
+
         $formData = $request->validate([
             'taskName' => ['required', Rule::unique('tasks', 'taskName')],
             'description' => 'required'
         ]);
 
+        $formData['user_id'] = auth()->id();
+
         Tasks::create($formData);
 
-        return redirect('/');
+
+        return back()->with('sucess', 'Task Created');
+    }
+
+    public function delete(Tasks $task)
+    {
+        $task->delete();
+        return back()->with('sucess', 'Task Deleted');
     }
 }

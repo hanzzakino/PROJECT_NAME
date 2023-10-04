@@ -1,10 +1,22 @@
 @props(['task'])
 
-<div class="card container mb-3 pt-2 pb-2">
+<div class="card shadow-sm container mb-3 p-4">
     <a href="{{ $task->id }}">
-        {{ $task->taskName }}
+        <strong>{{ $task->user_id }} - {{ $task->taskName }}</strong>
     </a>
-    <p>
+    <p class="pt-2">
         {{ $task->description }}
     </p>
+    <div class="d-flex justify-content-end">
+        <div>
+            <form method="POST" action="{{ $task->id }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-light">Delete</button>
+            </form>
+
+        </div>
+
+    </div>
+
 </div>

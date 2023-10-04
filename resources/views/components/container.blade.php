@@ -17,14 +17,6 @@
         }
     </style> --}}
 
-    <x-navbar />
-    <div class="z-3 position-fixed top-5 d-flex w-100 justify-content-center">
-        <div class="w-50 d-flex justify-content-center align-items-center">
-            <x-notification />
-        </div>
-    </div>
-
-
     {{ $slot }}
 
 

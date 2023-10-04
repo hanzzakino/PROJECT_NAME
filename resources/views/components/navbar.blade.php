@@ -6,8 +6,17 @@
             </li>
         </ul>
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            {{-- <li class="nav-item active">
                 <a class="nav-link" href="/user/login">Login</a>
+            </li> --}}
+            <li class="nav-item active">
+                <form method="GET" action="/user/logout">
+                    @csrf
+                    <button type="submit">
+                        Logout
+                    </button>
+                </form>
+
             </li>
         </ul>
     </div>
