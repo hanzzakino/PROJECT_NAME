@@ -9,13 +9,13 @@ class Tasks extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['taskName','description'];
+    protected $fillable = ['taskName', 'description'];
 
-    public function scopeFilter($query, array $filters){
-        if($filters['search'] ?? false) {
-            $query->where('taskName','like','%'.request('search').'%')
-            ->orWhere('description','like','%'.request('search').'%');
+    public function scopeFilter($query, array $filters)
+    {
+        if ($filters['search'] ?? false) {
+            $query->where('taskName', 'like', '%' . request('search') . '%')
+                ->orWhere('description', 'like', '%' . request('search') . '%');
         }
     }
-    
 }

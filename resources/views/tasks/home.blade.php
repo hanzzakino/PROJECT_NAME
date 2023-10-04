@@ -2,20 +2,20 @@
     <div class="container-fluid pb-4 pt-4">
         <div class="container d-flex flex-row justify-content-between mt-3">
             <div class="d-flex align-items-center">
-                <form class="form-group d-flex flex-row" >
-                    <input class="form-control" type="text" name="search" placeholder="Search"/>
+                <form class="form-group d-flex flex-row">
+                    <input class="form-control" type="text" name="search" placeholder="Search" />
                     <button class="btn btn-primary" type="submit">Search</button>
                 </form>
-                
+
             </div>
             <div>
                 <h1>Hello!</h1>
             </div>
-            
+
         </div>
-        
-        
-        <div class="container pt-4"> 
+
+
+        <div class="container pt-4">
             <div class="container d-flex flex-row justify-content-between mt-3 mb-4">
                 <div>
                     <h1>
@@ -24,16 +24,16 @@
                 </div>
                 <div class="d-flex align-items-center">
                     <p>
-                        {{$resultCount}} Items
+                        {{ $resultCount }} Items
                     </p>
                 </div>
             </div>
-            
-            @if(empty($tasks))
+
+            @if (empty($tasks))
                 <h2>Empty</h2>
             @else
                 @foreach ($tasks as $task)
-                    <x-task-card :task="$task"/>
+                    <x-task-card :task="$task" />
                 @endforeach
             @endif
             <div class="d-flex flex-row justify-content-center">
