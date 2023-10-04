@@ -17,7 +17,7 @@ use App\Models\Tasks;
 */
 
 Route::get('/', function () {
-    return view('/user');
+    return redirect('/tasks/home');
 });
 
 
@@ -25,12 +25,17 @@ Route::get('/user/login', function () {
     return view('/user/login');
 });
 
-Route::get('/user/home', [TasksController::class,'index']);
+Route::get('/tasks/home', [TasksController::class,'index']);
+
+
 
 // Route Model binding
-Route::get('/user/task/{task}', [TasksController::class,'show']);
+Route::get('/tasks/create', [TasksController::class,'create']);
 
+Route::post('/tasks', [TasksController::class,'store']);
 
+// Route Model binding
+Route::get('/tasks/{task}', [TasksController::class,'show']);
 
 
 // Route::get('/get-object', function () {

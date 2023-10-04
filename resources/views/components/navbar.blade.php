@@ -3,7 +3,7 @@
     <div class="container collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/user/home">Home</a>
+                <a class="nav-link" href="/tasks/home">Home</a>
             </li>
         </ul>
         <ul class="navbar-nav mr-auto">
