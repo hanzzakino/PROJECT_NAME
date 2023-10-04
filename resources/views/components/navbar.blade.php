@@ -12,7 +12,7 @@
             <li class="nav-item active">
                 <form method="GET" action="/user/logout">
                     @csrf
-                    <button type="submit">
+                    <button type="submit"class="btn btn-light">
                         Logout
                     </button>
                 </form>
